@@ -1,5 +1,4 @@
 import { Locator, Page } from '@playwright/test'
-import { OrderPage } from './order-page'
 import { SERVICE_URL } from '../../config/env-data'
 import { Button } from '../atoms/Button'
 
@@ -9,14 +8,13 @@ export class LoginPage {
   readonly signInButton: Button
   readonly usernameField: Locator
   readonly passwordField: Locator
-  // add more locators here
+
 
   constructor(page: Page) {
     this.page = page
     this.signInButton = new Button(page, 'signIn-button') // page.getByTestId('signIn-button')
     this.usernameField = page.getByTestId('username-input')
     this.passwordField = page.getByTestId('password-input')
-    // continue with the rest of the implementation below
   }
 
   async open() {
@@ -28,6 +26,4 @@ export class LoginPage {
     await this.passwordField.fill(password)
     await this.signInButton.click()
   }
-
-  // continue with the rest of the implementation below
 }

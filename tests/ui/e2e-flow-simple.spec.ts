@@ -9,8 +9,8 @@ test('TL-17-1 signIn button disabled when incorrect data inserted', async ({ pag
   await loginPage.open()
   await loginPage.usernameField.fill(faker.lorem.word(2))
   await loginPage.passwordField.fill(faker.lorem.word(7))
-  await loginPage.signInButton.checkVisible();
-  await loginPage.signInButton.checkEnabled(false);
+  await loginPage.signInButton.checkVisible()
+  await loginPage.signInButton.checkEnabled(false)
 })
 
 test('TL-17-2 login with correct credentials and verify order creation page', async ({ page }) => {

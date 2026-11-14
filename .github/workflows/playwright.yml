@@ -1,13 +1,14 @@
 name: Playwright Tests
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, HW-17-Vladimir]
   pull_request:
-    branches: [main, master]
+    branches: [main, master, HW-17-Vladimir]
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4

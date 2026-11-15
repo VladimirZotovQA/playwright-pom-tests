@@ -14,7 +14,7 @@ test.describe('TL-18 e2e', () => {
   let orderPage: OrderPage
   let notFoundPage: NotFoundPage
   let foundPage: FoundPage
-  test.beforeEach(async ({page}) => {
+  test.beforeEach(async ({ page }) => {
     loginPage = new LoginPage(page)
     orderPage = new OrderPage(page)
     notFoundPage = new NotFoundPage(page)
@@ -22,7 +22,7 @@ test.describe('TL-18 e2e', () => {
     await loginPage.open()
   })
 
-  test('TL-18-1 Not found page test', async ({ page }) => {
+  test('TL-18-1 Not found page test', async () => {
     await loginPage.signIn(USERNAME, PASSWORD)
     await orderPage.statusButton.checkVisible()
     await orderPage.statusButton.click()
@@ -31,7 +31,7 @@ test.describe('TL-18 e2e', () => {
     await notFoundPage.checkNotFoundPageVisible()
   })
 
-  test('TL-18-2 found page test', async ({ page }) => {
+  test('TL-18-2 found page test', async () => {
     await loginPage.signIn(USERNAME, PASSWORD)
     await orderPage.statusButton.checkVisible()
     await orderPage.statusButton.click()
@@ -40,4 +40,3 @@ test.describe('TL-18 e2e', () => {
     await foundPage.checkFoundPageVisible()
   })
 })
-

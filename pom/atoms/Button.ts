@@ -1,23 +1,19 @@
 import { expect, Locator, Page } from '@playwright/test'
+import { BaseAtom } from './BaseAtom'
 
-export class Button {
-  page: Page
-  buttonLoc: Locator
+export class Button extends BaseAtom {
 
-  constructor(page: Page, dataTestId: string /* "test-123" */) {
-    this.page = page
-    this.buttonLoc = page.getByTestId(dataTestId)
+
+  constructor(container: Page | Locator, dataTestId: string) {
+    super(container, dataTestId)
+
   }
 
   async click(): Promise<void> {
-    await this.buttonLoc.click();
+    await this.atomLoc.click()
   }
 
   async checkEnabled(enabled = true): Promise<void> {
-    await expect(this.buttonLoc).toBeEnabled({ enabled: enabled });
-  }
-
-  async checkVisible(visible = true): Promise<void> {
-    await expect(this.buttonLoc).toBeVisible({ visible: visible });
+    await expect(this.atomLoc).toBeEnabled({ enabled: enabled })
   }
 }

@@ -1,8 +1,9 @@
 import { Locator, Page } from '@playwright/test'
 import { Button } from '../atoms/Button'
 import { Input } from '../atoms/Input'
+import { BasePage } from './BasePage'
 
-export class OrderPage {
+export class OrderPage extends BasePage {
   readonly page: Page
   readonly statusButton: Button
   readonly usernameField: Input
@@ -13,8 +14,11 @@ export class OrderPage {
   readonly successPopupButton: Button
   readonly phoneError: Locator
   readonly logoutButton: Button
+  readonly searchOrderInput: Input
+  readonly searchOrderButton: Button
 
   constructor(page: Page) {
+    super(page)
     this.page = page
     this.statusButton = new Button(page, 'openStatusPopup-button')//page.getByTestId('openStatusPopup-button')
     this.usernameField = new Input(page, 'username-input')
@@ -25,5 +29,7 @@ export class OrderPage {
     this.successPopupButton = new Button(page, 'orderSuccessfullyCreated-popup-ok-button')
     this.phoneError = page.getByTestId('phone-input-error')
     this.logoutButton = new Button(page, 'logout-button')
+    this.searchOrderInput = new Input(page, 'searchOrder-input')
+    this.searchOrderButton = new Button(page, 'searchOrder-submitButton')
   }
 }
